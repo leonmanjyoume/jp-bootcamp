@@ -1,2 +1,2 @@
-window.BOOTCAMP_SUPABASE_URL = "https://bsvxktnhynoqmkigjroa.supabase.co";
+window.BOOTCAMP_SUPABASE_URL = "https://eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJzdnhrdG5oeW5vcW1raWdqcm9hIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzAwMzQ3MTEsImV4cCI6MjA4NTYxMDcxMX0.ZnUg9WOvdrjuUgp_8cQ2VnapTwuzZG_AcM7L40AHqdU.supabase.co";
 window.BOOTCAMP_SUPABASE_ANON_KEY = "bsvxktnhynoqmkigjroa";
