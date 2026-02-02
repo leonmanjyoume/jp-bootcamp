@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Bootcamp Sync Login</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <header class="wrap">
+    <div class="brand">
+      <div class="logo">日</div>
+      <div>
+        <h1>Sync / Login</h1>
+        <p class="sub">Email + password only (no Google login).</p>
+      </div>
+    </div>
+    <nav class="nav"><a href="index.html">← Back</a></nav>
+  </header>
+
+  <main class="wrap">
+    <section class="card">
+      <h2>Status</h2>
+      <div class="row space">
+        <div>
+          <div class="sub" id="whoami">Checking…</div>
+          <div class="sub small">Once logged in, your progress syncs automatically across devices.</div>
+        </div>
+        <button id="logoutBtn" class="btn ghost" style="display:none">Log out</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Sign in</h2>
+      <form id="signinForm" class="form">
+        <input id="inEmail" type="email" placeholder="Email" required />
+        <input id="inPass" type="password" placeholder="Password" required />
+        <button class="btn" type="submit">Sign in</button>
+      </form>
+    </section>
+
+    <section class="card">
+      <h2>Create account</h2>
+      <form id="signupForm" class="form">
+        <input id="upEmail" type="email" placeholder="Email" required />
+        <input id="upPass" type="password" placeholder="Password (min 6 chars)" minlength="6" required />
+        <button class="btn" type="submit">Create account</button>
+      </form>
+      <p class="sub small">Tip: you can disable email confirmation in Supabase Auth settings for instant signup.</p>
+    </section>
+
+    <section class="card">
+      <h2>One-time: push existing local progress</h2>
+      <p class="sub">If you used the offline version before, this copies local progress into your synced account.</p>
+      <button id="pushBtn" class="btn">Push local → cloud</button>
+      <p class="sub small" id="pushStatus">—</p>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="config.js"></script>
+  <script src="sync.js"></script>
+</body>
+</html>

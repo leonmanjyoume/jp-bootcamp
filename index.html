@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>30-Day Manga Japanese Bootcamp</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <header class="wrap">
+    <div class="brand">
+      <div class="logo">日</div>
+      <div>
+        <h1>30-Day Manga Japanese Bootcamp</h1>
+        <p class="sub">Novel-first literacy training (30 min/day core, scalable to 60–90).</p>
+      </div>
+    </div>
+    <nav class="nav">
+      <a href="#today">Today</a>
+      <a href="#calendar">30-Day Plan</a>
+      <a href="#tracker">Tracker</a>
+      <a href="#resources">Resources</a>
+      <a href="#howto">How to Read</a>
+      <a href="login.html">Sync / Login</a>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <section class="card">
+      <div class="row space">
+        <h2>Sync status</h2>
+        <div id="syncPill" class="pill">Checking…</div>
+      </div>
+      <p class="sub small" id="syncMsg">If you’re logged in, progress syncs automatically across devices.</p>
+    </section>
+
+    <section id="today" class="card">
+      <div class="row space">
+        <h2>Today</h2>
+        <div class="row gap">
+          <button id="startDayBtn" class="btn">Start / Resume</button>
+          <button id="resetDayBtn" class="btn ghost" title="Resets this day's checkboxes only">Reset Day</button>
+        </div>
+      </div>
+
+      <div class="grid2">
+        <div>
+          <h3>30-minute core</h3>
+          <ul class="tasks">
+            <li><label><input type="checkbox" data-task="anki"/> <b>Vocab (10m)</b> — add 5 words you saw in manga</label></li>
+            <li><label><input type="checkbox" data-task="read"/> <b>Reading (15m)</b> — read 1–3 pages; look up max 3 words</label></li>
+            <li><label><input type="checkbox" data-task="output"/> <b>Output (5m)</b> — write 3–5 sentences summary/diary</label></li>
+          </ul>
+          <div class="callout"><b>Rule:</b> Don’t translate everything. Read for flow.</div>
+        </div>
+
+        <div>
+          <h3>Optional upgrades (pick 1)</h3>
+          <ul class="tasks">
+            <li><label><input type="checkbox" data-task="shadow"/> <b>Shadowing (15m)</b> — repeat 2 minutes of audio aloud</label></li>
+            <li><label><input type="checkbox" data-task="grammar"/> <b>Grammar noticing (15m)</b> — add 1 pattern + 1 example</label></li>
+            <li><label><input type="checkbox" data-task="deepread"/> <b>Deep reading (30m)</b> — weekend stamina session</label></li>
+          </ul>
+
+          <h3>Focus timer</h3>
+          <div class="timer">
+            <div class="timerDisplay" id="timerDisplay">30:00</div>
+            <div class="row gap">
+              <button class="btn" data-minutes="30">30m</button>
+              <button class="btn ghost" data-minutes="60">60m</button>
+              <button class="btn ghost" data-minutes="90">90m</button>
+            </div>
+            <div class="row gap">
+              <button id="timerStart" class="btn">Start</button>
+              <button id="timerPause" class="btn ghost">Pause</button>
+              <button id="timerReset" class="btn ghost">Reset</button>
+            </div>
+            <p class="sub small">Works offline; sync resumes when logged in.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="calendar" class="card">
+      <div class="row space">
+        <h2>30-Day Plan</h2>
+        <div class="row gap">
+          <button id="setStartBtn" class="btn ghost">Set Start Date</button>
+          <button id="clearPlanBtn" class="btn ghost">Clear All Progress</button>
+        </div>
+      </div>
+      <p class="sub">Each day = the same 30-minute core + a tiny “daily twist”.</p>
+      <div id="calendarGrid" class="calendar"></div>
+      <div class="callout"><b>Legend:</b> 🌱 easy, 🔁 review, 🧠 focus, 📚 longer reading.</div>
+    </section>
+
+    <section id="tracker" class="card">
+      <h2>Vocab + Output tracker</h2>
+      <div class="grid2">
+        <div>
+          <h3>Quick vocab capture</h3>
+          <form id="vocabForm" class="form">
+            <input id="vWord" placeholder="Word (e.g., 黙り込む)" required/>
+            <input id="vReading" placeholder="Reading (e.g., だまりこむ)"/>
+            <input id="vMeaning" placeholder="Meaning (e.g., to fall silent)"/>
+            <input id="vSource" placeholder="Source (manga/chapter/page)"/>
+            <button class="btn" type="submit">Add</button>
+          </form>
+          <div class="row space">
+            <p class="sub small">Only add words that repeat or matter. 5/day is plenty.</p>
+            <button id="exportVocab" class="btn ghost">Export CSV</button>
+          </div>
+          <div class="tableWrap">
+            <table id="vocabTable">
+              <thead><tr><th>Word</th><th>Reading</th><th>Meaning</th><th>Source</th><th></th></tr></thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div>
+          <h3>Daily micro-output</h3>
+          <textarea id="outputBox" rows="10" placeholder="今日のまとめ（3–5文）…"></textarea>
+          <div class="row space">
+            <div class="row gap">
+              <button id="saveOutput" class="btn">Save</button>
+              <button id="clearOutput" class="btn ghost">Clear</button>
+            </div>
+            <p class="sub small" id="outputStatus">Not saved yet</p>
+          </div>
+          <div class="callout">
+            <b>Templates:</b><br/>
+            ・今日は＿＿を読んだ。<br/>
+            ・＿＿が起きた。<br/>
+            ・新しい単語は＿＿。<br/>
+            ・感想：＿＿。
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="resources" class="card">
+      <h2>Free resources</h2>
+      <div class="grid2">
+        <div>
+          <h3>Manga suggestions</h3>
+          <ul>
+            <li><b>よつばと！</b></li>
+            <li><b>しろくまカフェ</b></li>
+            <li><b>ドラえもん</b></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Tools</h3>
+          <ul>
+            <li>Anki: https://apps.ankiweb.net/</li>
+            <li>Dictionary: https://jisho.org/</li>
+            <li>Writing corrections: https://langcorrect.com/</li>
+            <li>Grammar reference: https://my.wasabi-jpn.com/</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="howto" class="card">
+      <h2>How to read manga</h2>
+      <ol class="steps">
+        <li><b>Read for story first.</b></li>
+        <li><b>Look up max 3 words.</b></li>
+        <li><b>Capture words quickly.</b></li>
+        <li><b>Write 3–5 sentences.</b></li>
+        <li><b>One longer reading session/week.</b></li>
+      </ol>
+      <div class="callout"><b>If stuck:</b> read the page aloud.</div>
+    </section>
+
+    <footer class="foot"><p>Optional Supabase sync. Works offline; sync mirrors your browser data when logged in.</p></footer>
+  </main>
+
+  <dialog id="startDialog">
+    <form method="dialog" class="dialog">
+      <h3>Set your start date</h3>
+      <p class="sub">Anchors the 30-day calendar.</p>
+      <input id="startDateInput" type="date"/>
+      <div class="row space">
+        <button class="btn ghost" value="cancel">Cancel</button>
+        <button id="saveStartDate" class="btn" value="ok">Save</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
